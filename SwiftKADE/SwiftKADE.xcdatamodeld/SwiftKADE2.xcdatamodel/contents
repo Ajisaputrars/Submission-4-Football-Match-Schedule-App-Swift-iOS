@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Events" representedClassName="Events" syncable="YES" codeGenerationType="class">
+        <attribute name="dateEvent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idAwayTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idHomeTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idLeague" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intAwayScore" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intHomeScore" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strAwayGoalDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strAwayLineupDefense" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strAwayLineupForward" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strAwayLineupGoalkeeper" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strAwayLineupMidfield" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strAwayLineupSubstitutes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strAwayTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strEvent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strHomeGoalDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strHomeLineupDefense" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strHomeLineupForward" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strHomeLineupGoalkeeper" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strHomeLineupMidfield" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strHomeLineupSubstitutes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strHomeTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strLeague" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strSport" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strTime" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Events" positionX="-63" positionY="-18" width="128" height="30"/>
+    </elements>
 </model>
