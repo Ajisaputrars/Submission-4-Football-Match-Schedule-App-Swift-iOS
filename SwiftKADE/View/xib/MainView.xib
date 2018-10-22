@@ -25,6 +25,7 @@
                     <segments>
                         <segment title="Last Match"/>
                         <segment title="Next Match"/>
+                        <segment title="Favorites"/>
                     </segments>
                     <connections>
                         <action selector="segmentedControlChanged:" destination="-1" eventType="valueChanged" id="3de-zs-b6L"/>

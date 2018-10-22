@@ -40,7 +40,6 @@ class DetailController: UIViewController {
         setGoalLabelConstraint()
         
         checkIsSavedStatusFromCoreData()
-        
         inflateBarButton()
     }
     
