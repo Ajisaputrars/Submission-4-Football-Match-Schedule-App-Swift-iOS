@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailController: UIViewController {
     
@@ -14,13 +15,16 @@ class DetailController: UIViewController {
     private var homeTeamLookupUrl: String!
     private var awayTeamLookupUrl: String!
     
+    var context: NSManagedObjectContext!
+    var eventsObject = [Events]()
+    
     private var teamBadgePresenter = TeamPresenter()
     
     private var actionButton:UIBarButtonItem!
     private var button: UIButton!
     private var saveBarButton: UIBarButtonItem!
     
-    private var isSaved:Bool = true
+    private var isSaved:Bool = false
     
     private var detailView: DetailView! {
         guard isViewLoaded else { return nil }
@@ -30,9 +34,12 @@ class DetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Detail Match"
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         detailView.configure(event: event)
         setGoalLabelConstraint()
+        
+        checkIsSavedStatusFromCoreData()
         
         inflateBarButton()
     }
@@ -71,11 +78,9 @@ class DetailController: UIViewController {
     @objc private func saveBarButtonAction(){
         self.isSaved = !self.isSaved
         if self.isSaved {
-            //Set Saving
-            print("Saving")
+            saveToCoreData()
         } else {
-            //Set Deleting
-            print("Deleting")
+            deleteFromCoreData()
         }
         changeSaveBarButtonImage(isSaved: self.isSaved)
     }
@@ -109,6 +114,77 @@ class DetailController: UIViewController {
         } else {
             detailView.homeBottomConstraint.constant = 0
         }
+    }
+    
+    func saveToCoreData(){
+        let event = Events(context: context)
+        event.dateEvent = self.event.dateEvent
+        event.idAwayTeam = self.event.idAwayTeam
+        event.idHomeTeam = self.event.idHomeTeam
+        event.idLeague = self.event.idLeague
+        event.intAwayScore = self.event.intAwayScore
+        event.intHomeScore = self.event.intHomeScore
+        event.strAwayGoalDetails = self.event.strAwayGoalDetails
+        event.strAwayLineupDefense = self.event.strAwayLineupDefense
+        event.strAwayLineupForward = self.event.strAwayLineupForward
+        event.strAwayLineupGoalkeeper = self.event.strAwayLineupGoalkeeper
+        
+        event.strAwayLineupMidfield = self.event.strAwayLineupMidfield
+        event.strAwayLineupSubstitutes = self.event.strAwayLineupSubstitutes
+        event.strAwayTeam = self.event.strAwayTeam
+        event.strDate = self.event.strDate
+        event.strEvent = self.event.strEvent
+        event.strHomeGoalDetails = self.event.strHomeGoalDetails
+        event.strHomeLineupDefense = self.event.strHomeLineupDefense
+        event.strHomeLineupForward = self.event.strHomeLineupForward
+        event.strHomeLineupGoalkeeper = self.event.strHomeLineupGoalkeeper
+        event.strHomeLineupMidfield = self.event.strHomeLineupMidfield
+        
+        event.strHomeLineupSubstitutes = self.event.strHomeLineupSubstitutes
+        event.strHomeTeam = self.event.strHomeTeam
+        event.strLeague = self.event.strLeague
+        event.strSport = self.event.strSport
+        event.strTime = self.event.strTime
+        event.idEvent = self.event.idEvent
+        
+        do {
+            try context.save()
+        } catch let err as NSError{
+            print ("Error \(err) with detail \(err.localizedDescription)")
+        }
+    }
+    
+    func deleteFromCoreData(){
+        let fetchRequest: NSFetchRequest<Events> = Events.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "idEvent==\(self.event.idEvent)")
+        
+        do {
+            let objects = try context.fetch(fetchRequest)
+            for object in objects {
+                context.delete(object)
+            }
+            try context.save()
+        } catch _ {
+            print("Error deleting")
+        }
+    }
+    
+    func checkIsSavedStatusFromCoreData(){
+        let fetchRequest:NSFetchRequest<Events> = Events.fetchRequest()
+        
+        do {
+            eventsObject = try context.fetch(fetchRequest)
+        }catch{
+            print(error)
+        }
+        
+        for event in eventsObject {
+            print(event.strHomeTeam! + " VS " + event.strAwayTeam!)
+            if event.idEvent == self.event.idEvent {
+                self.isSaved = true
+            }
+        }
+        print("")
     }
 }
 
