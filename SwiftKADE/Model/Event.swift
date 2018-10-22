@@ -34,6 +34,17 @@ class Event{
     private var _strTime:String!
     private var _idHomeTeam:String!
     private var _idAwayTeam:String!
+    private var _idEvent: String!
+    
+    public var idEvent:String {
+        if let i = _idEvent {
+            if i == "" {
+                return "null"
+            }
+            return i
+        }
+        return "null"
+    }
     
     public var strEvent:String {
         if let i = _strEvent {
@@ -286,13 +297,13 @@ class Event{
         return "null"
     }
     
-    init(strEvent:String?, strSport:String?, idLeague:String?, strLeague:String?,
-         strHomeTeam:String?, strAwayTeam:String?, intHomeScore:String?, intAwayScore:String?,
-         strHomeGoalDetails:String?, strHomeLineupGoalkeeper:String?, strHomeLineupDefense:String?,
-         strHomeLineupMidfield:String?,strHomeLineupForward:String?, strHomeLineupSubstitutes:String?,
-         strAwayGoalDetails:String?, strAwayLineupGoalkeeper:String?, strAwayLineupDefense:String?,
-         strAwayLineupMidfield:String?, strAwayLineupForward:String?, strAwayLineupSubstitutes:String?,
-         dateEvent:String?, strDate:String?, strTime:String?, idHomeTeam:String?, idAwayTeam:String? ) {
+    init(strEvent:String, strSport:String, idLeague:String, strLeague:String,
+         strHomeTeam:String, strAwayTeam:String, intHomeScore:String, intAwayScore:String,
+         strHomeGoalDetails:String, strHomeLineupGoalkeeper:String, strHomeLineupDefense:String,
+         strHomeLineupMidfield:String,strHomeLineupForward:String, strHomeLineupSubstitutes:String,
+         strAwayGoalDetails:String, strAwayLineupGoalkeeper:String, strAwayLineupDefense:String,
+         strAwayLineupMidfield:String, strAwayLineupForward:String, strAwayLineupSubstitutes:String,
+         dateEvent:String, strDate:String, strTime:String, idHomeTeam:String, idAwayTeam:String, idEvent: String ) {
         
         self._strEvent = strEvent
         self._strSport = strSport
@@ -319,5 +330,6 @@ class Event{
         self._strTime = strTime
         self._idHomeTeam = idHomeTeam
         self._idAwayTeam = idAwayTeam
+        self._idEvent = idEvent
     }
 }

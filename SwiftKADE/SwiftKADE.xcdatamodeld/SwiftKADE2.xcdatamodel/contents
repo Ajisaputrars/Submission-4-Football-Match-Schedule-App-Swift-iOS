@@ -3,6 +3,7 @@
     <entity name="Events" representedClassName="Events" syncable="YES" codeGenerationType="class">
         <attribute name="dateEvent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idAwayTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idEvent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idHomeTeam" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idLeague" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intAwayScore" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,6 +29,6 @@
         <attribute name="strTime" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Events" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="Events" positionX="-63" positionY="-18" width="128" height="435"/>
     </elements>
 </model>
