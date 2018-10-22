@@ -16,6 +16,12 @@ class DetailController: UIViewController {
     
     private var teamBadgePresenter = TeamPresenter()
     
+    private var actionButton:UIBarButtonItem!
+    private var button: UIButton!
+    private var saveBarButton: UIBarButtonItem!
+    
+    private var isSaved:Bool = true
+    
     private var detailView: DetailView! {
         guard isViewLoaded else { return nil }
         return view as! DetailView
@@ -23,20 +29,79 @@ class DetailController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Detail Match"
+        
         detailView.configure(event: event)
         setGoalLabelConstraint()
-        self.title = "Detail Match"
+        
+        inflateBarButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        setTeamLookupUrl()
+        homeTeamLookupUrl = TEAM_LOOKUP_URL + event.idHomeTeam
+        awayTeamLookupUrl = TEAM_LOOKUP_URL + event.idAwayTeam
         
         teamBadgePresenter.getTeams(url: homeTeamLookupUrl!, view: self, service: TeamService(), isHome: true)
         teamBadgePresenter.getTeams(url: awayTeamLookupUrl!, view: self, service: TeamService(), isHome: false)
     }
     
-    func setGoalLabelConstraint(){
+    private func inflateBarButton(){
+        actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: nil)
+        
+        button = UIButton(type: .custom)
+        if isSaved {
+            button.setImage(UIImage(named: "StarSaved"), for: .normal)
+        } else {
+            button.setImage(UIImage(named: "StarUnsaved"), for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(saveBarButtonAction), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        saveBarButton = UIBarButtonItem(customView: button)
+        let currWidth = saveBarButton.customView?.widthAnchor.constraint(equalToConstant: 24)
+        currWidth?.isActive = true
+        let currHeight = saveBarButton.customView?.heightAnchor.constraint(equalToConstant: 24)
+        currHeight?.isActive = true
+        
+        self.navigationItem.setRightBarButtonItems([actionButton, saveBarButton], animated: true)
+    }
+    
+    @objc private func saveBarButtonAction(){
+        self.isSaved = !self.isSaved
+        if self.isSaved {
+            //Set Saving
+            print("Saving")
+        } else {
+            //Set Deleting
+            print("Deleting")
+        }
+        changeSaveBarButtonImage(isSaved: self.isSaved)
+    }
+    
+    @objc private func changeSaveBarButtonImage(isSaved: Bool){
+        self.navigationItem.rightBarButtonItems?.remove(at: 1)
+        button = UIButton(type: .custom)
+        
+        if isSaved {
+            button.setImage(UIImage(named: "StarSaved"), for: .normal)
+        } else {
+            button.setImage(UIImage(named: "StarUnsaved"), for: .normal)
+        }
+        button.addTarget(self, action: #selector(saveBarButtonAction), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        saveBarButton = UIBarButtonItem(customView: button)
+        let currWidth = saveBarButton.customView?.widthAnchor.constraint(equalToConstant: 24)
+        currWidth?.isActive = true
+        let currHeight = saveBarButton.customView?.heightAnchor.constraint(equalToConstant: 24)
+        currHeight?.isActive = true
+        
+        self.navigationItem.rightBarButtonItems?.insert(saveBarButton, at: 1)
+    }
+    
+    private func setGoalLabelConstraint(){
         if detailView.homeGoalScorerLabel.bounds.size.height > detailView.awayGoalScorerLabel.bounds.size.height {
             detailView.homeBottomConstraint.constant = 0
         } else if detailView.homeGoalScorerLabel.bounds.size.height < detailView.awayGoalScorerLabel.bounds.size.height {
@@ -45,23 +110,10 @@ class DetailController: UIViewController {
             detailView.homeBottomConstraint.constant = 0
         }
     }
-    
-    func setTeamLookupUrl(){
-        homeTeamLookupUrl = TEAM_LOOKUP_URL + event.idHomeTeam
-        awayTeamLookupUrl = TEAM_LOOKUP_URL + event.idAwayTeam
-        
-        print("HOME URL = \(homeTeamLookupUrl!)")
-        print("AWAY URL = \(awayTeamLookupUrl!)")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
 
 extension DetailController: TeamBadgeView {
     func setHomeBadge(teams: [Team]) {
-//        print(teams.count)
         let teamBadgeUrl = teams[0].strTeamBadge
         detailView.configureHomeBadge(url: teamBadgeUrl)
     }
@@ -69,5 +121,11 @@ extension DetailController: TeamBadgeView {
     func setAwayBadge(teams: [Team]) {
         let teamBadgeUrl = teams[0].strTeamBadge
         detailView.configureAwayBadge(url: teamBadgeUrl)
+    }
+}
+
+extension DetailController{
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
