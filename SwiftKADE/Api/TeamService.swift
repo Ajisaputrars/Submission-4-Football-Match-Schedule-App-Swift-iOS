@@ -13,7 +13,6 @@ import SwiftyJSON
 class TeamService{
     func getTeamBadge(url: String, _ completion:@escaping ([Team]) -> Void) {
         var teams = [Team]()
-        print("URL dari getTeamBadge = \(url)")
         Alamofire.request(url).responseJSON { (respons) in
             if respons.result.isSuccess {
                 let teamJSON: JSON = JSON(respons.result.value)

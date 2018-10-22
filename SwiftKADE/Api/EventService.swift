@@ -13,7 +13,6 @@ import SwiftyJSON
 class EventService{
     func getEvents(url: String, _ completion:@escaping ([Event]) -> Void){
         var events = [Event]()
-        print("URL dari getEvents = \(url)")
         Alamofire.request(url).responseJSON { (respons) in
             if respons.result.isSuccess {
                 let eventsJSON: JSON = JSON(respons.result.value)
