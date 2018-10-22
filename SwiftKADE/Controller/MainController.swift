@@ -40,7 +40,9 @@ class MainController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        mainView.eventTableView.reloadData()
+        if mainView.segmentedControl.selectedSegmentIndex == 2 {
+            fetchDataFromCoreData()
+        }
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
