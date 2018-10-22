@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainController" customModule="SwiftKADE" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="MainView" customModule="SwiftKADE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="On4-HB-dVd">
+                    <rect key="frame" x="16" y="28" width="343" height="29"/>
+                    <segments>
+                        <segment title="Last Match"/>
+                        <segment title="Next Match"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentedControlChanged:" destination="-1" eventType="valueChanged" id="3de-zs-b6L"/>
+                    </connections>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z61-2B-iMb">
+                    <rect key="frame" x="16" y="61" width="343" height="606"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error fetching data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvX-1j-Zy9">
+                    <rect key="frame" x="116" y="323" width="143" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="kgN-X1-qzS">
+                    <rect key="frame" x="177" y="324" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zvX-1j-Zy9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="CB8-Aw-BiH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="z61-2B-iMb" secondAttribute="trailing" constant="16" id="DAX-eT-woC"/>
+                <constraint firstItem="zvX-1j-Zy9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Oit-Ap-Efu"/>
+                <constraint firstItem="On4-HB-dVd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Q3N-YB-RaW"/>
+                <constraint firstItem="kgN-X1-qzS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TuA-Ln-XeH"/>
+                <constraint firstItem="On4-HB-dVd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="aZx-gy-GNB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="On4-HB-dVd" secondAttribute="trailing" constant="16" id="keZ-Oh-wPK"/>
+                <constraint firstItem="z61-2B-iMb" firstAttribute="top" secondItem="On4-HB-dVd" secondAttribute="bottom" constant="5" id="s1U-59-khK"/>
+                <constraint firstItem="kgN-X1-qzS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="xWX-Bd-4nM"/>
+                <constraint firstItem="z61-2B-iMb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="yaP-Uh-9dP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="z61-2B-iMb" secondAttribute="bottom" id="zrB-Uf-o8b"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <connections>
+                <outlet property="errorLabel" destination="zvX-1j-Zy9" id="XGM-9d-R0N"/>
+                <outlet property="eventTableView" destination="z61-2B-iMb" id="d42-Jo-zbl"/>
+                <outlet property="loadingIndicator" destination="kgN-X1-qzS" id="aAn-t4-ChD"/>
+                <outlet property="segmentedControl" destination="On4-HB-dVd" id="8SI-hO-Hxx"/>
+            </connections>
+            <point key="canvasLocation" x="39.5" y="54.5"/>
+        </view>
+    </objects>
+</document>
