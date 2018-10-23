@@ -29,11 +29,17 @@ class SwiftKADETests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        eventPresenter.getEvents(view: mainController, service: eventService, url: LAST_EVENT_URL)
+    func testEventServiceWithLastEventUrl(){
+        eventService.getEvents(url: LAST_EVENT_URL) { (events) in
+            XCTAssertEqual(events.count, 15)
+            
+        }
+    }
+    
+    func testEventServiceWithNextEventUrl(){
+        eventService.getEvents(url: NEXT_EVENT_URL) { (events) in
+            XCTAssertEqual(events.count, 15)
+        }
     }
     
     func testPerformanceExample() {
