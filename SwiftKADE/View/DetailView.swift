@@ -12,34 +12,24 @@ import Kingfisher
 class DetailView: UIView {
     
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var homeImageView: UIImageView!
-    
     @IBOutlet weak var homeTeamLabel: UILabel!
     @IBOutlet weak var homeScoreLabel: UILabel!
     @IBOutlet weak var awayScoreLabel: UILabel!
     @IBOutlet weak var awayTeamLabel: UILabel!
-    
     @IBOutlet weak var awayImageView: UIImageView!
-    
     @IBOutlet weak var homeGoalScorerLabel: UILabel!
     @IBOutlet weak var awayGoalScorerLabel: UILabel!
-    
     @IBOutlet weak var homeGoalKeeperLabel: UILabel!
     @IBOutlet weak var awayGoalKeeperLabel: UILabel!
-    
     @IBOutlet weak var homeDefenseLabel: UILabel!
     @IBOutlet weak var awayDefenseLabel: UILabel!
-    
     @IBOutlet weak var homeMidFielderLabel: UILabel!
     @IBOutlet weak var awayMidFielderLabel: UILabel!
-    
     @IBOutlet weak var homeForwardLabel: UILabel!
     @IBOutlet weak var awayForwardLabel: UILabel!
-    
     @IBOutlet weak var homeSubstitutesLabel: UILabel!
     @IBOutlet weak var awaySubstitutesLabel: UILabel!
-    
     @IBOutlet weak var homeBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var awayBottomConstraint: NSLayoutConstraint!
     

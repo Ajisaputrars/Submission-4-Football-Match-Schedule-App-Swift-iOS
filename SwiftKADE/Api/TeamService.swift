@@ -22,7 +22,7 @@ class TeamService{
                     teams.append(team)
                 }
             } else if respons.result.isFailure {
-                print("TeamService class : Response GAGAL COEG!")
+                print("TeamService class : Failed")
             }
             completion(teams)
         }

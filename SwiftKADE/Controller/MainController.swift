@@ -24,7 +24,7 @@ class MainController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Football Match Schedule"
+        self.title = "Football Match"
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let nib = UINib(nibName: "EventCell", bundle: nil)
@@ -61,7 +61,6 @@ class MainController: UIViewController {
     
     func fetchDataFromCoreData(){
         self.events.removeAll()
-
         let fetchRequest:NSFetchRequest<Events> = Events.fetchRequest()
         do {
             eventsObject = try context.fetch(fetchRequest)

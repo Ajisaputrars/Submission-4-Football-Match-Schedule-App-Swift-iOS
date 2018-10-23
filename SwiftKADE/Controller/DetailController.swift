@@ -47,7 +47,6 @@ class DetailController: UIViewController {
         super.viewDidAppear(true)
         homeTeamLookupUrl = TEAM_LOOKUP_URL + event.idHomeTeam
         awayTeamLookupUrl = TEAM_LOOKUP_URL + event.idAwayTeam
-        
         teamBadgePresenter.getTeams(url: homeTeamLookupUrl!, view: self, service: TeamService(), isHome: true)
         teamBadgePresenter.getTeams(url: awayTeamLookupUrl!, view: self, service: TeamService(), isHome: false)
     }
@@ -127,7 +126,6 @@ class DetailController: UIViewController {
         event.strAwayLineupDefense = self.event.strAwayLineupDefense
         event.strAwayLineupForward = self.event.strAwayLineupForward
         event.strAwayLineupGoalkeeper = self.event.strAwayLineupGoalkeeper
-        
         event.strAwayLineupMidfield = self.event.strAwayLineupMidfield
         event.strAwayLineupSubstitutes = self.event.strAwayLineupSubstitutes
         event.strAwayTeam = self.event.strAwayTeam
@@ -138,7 +136,6 @@ class DetailController: UIViewController {
         event.strHomeLineupForward = self.event.strHomeLineupForward
         event.strHomeLineupGoalkeeper = self.event.strHomeLineupGoalkeeper
         event.strHomeLineupMidfield = self.event.strHomeLineupMidfield
-        
         event.strHomeLineupSubstitutes = self.event.strHomeLineupSubstitutes
         event.strHomeTeam = self.event.strHomeTeam
         event.strLeague = self.event.strLeague

@@ -52,7 +52,7 @@ class EventService{
                     events.append(event)
                 }
             } else if respons.result.isFailure {
-                print("EventService class : Response GAGAL COEG!")
+                print("EventService class : Failed")
             }
             completion(events)
         }
