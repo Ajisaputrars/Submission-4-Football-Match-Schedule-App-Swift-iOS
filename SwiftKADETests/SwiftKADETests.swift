@@ -30,15 +30,30 @@ class SwiftKADETests: XCTestCase {
     }
     
     func testEventServiceWithLastEventUrl(){
+        let anExpectation = expectation(description: "foobar")
         eventService.getEvents(url: LAST_EVENT_URL) { (events) in
             XCTAssertEqual(events.count, 15)
-            
+            anExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                XCTFail("Error: \(error.localizedDescription)")
+            }
         }
     }
     
     func testEventServiceWithNextEventUrl(){
+        let anExpectation = expectation(description: "foobar")
         eventService.getEvents(url: NEXT_EVENT_URL) { (events) in
             XCTAssertEqual(events.count, 15)
+            anExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                XCTFail("Error: \(error.localizedDescription)")
+            }
         }
     }
     
