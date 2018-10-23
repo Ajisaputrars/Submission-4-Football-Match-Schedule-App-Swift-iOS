@@ -46,6 +46,9 @@
                 </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <accessibility key="accessibilityConfiguration">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <constraints>
                 <constraint firstItem="zvX-1j-Zy9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="CB8-Aw-BiH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="z61-2B-iMb" secondAttribute="trailing" constant="16" id="DAX-eT-woC"/>

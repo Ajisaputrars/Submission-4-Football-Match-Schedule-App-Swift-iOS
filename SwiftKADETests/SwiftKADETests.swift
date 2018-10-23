@@ -11,9 +11,17 @@ import XCTest
 
 class SwiftKADETests: XCTestCase {
     
+    private var eventService: EventService!
+    private var eventPresenter: EventPresenter!
+    private var mainController: MainController!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        self.eventService = EventService()
+        self.eventPresenter = EventPresenter()
+        self.mainController = MainController()
     }
     
     override func tearDown() {
@@ -24,6 +32,8 @@ class SwiftKADETests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        eventPresenter.getEvents(view: mainController, service: eventService, url: LAST_EVENT_URL)
     }
     
     func testPerformanceExample() {

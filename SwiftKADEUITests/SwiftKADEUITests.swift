@@ -28,12 +28,21 @@ class SwiftKADEUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testTapTableViewcellLastMatch() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
+        
         let app = XCUIApplication()
-        app.otherElements.containing(.navigationBar, identifier:"Football Match Schedule").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
-        app.navigationBars["Detail Match"].buttons["Back"].tap()
+        sleep(5)
+        let element = app.otherElements.containing(.navigationBar, identifier:"Football Match").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        element.tap()
+        
+        let backButton = app.navigationBars["Detail Match"].buttons["Back"]
+        backButton.tap()
+    }
+    
+    func testTapTableViewcellNextMatch() {
+        
     }
 }
