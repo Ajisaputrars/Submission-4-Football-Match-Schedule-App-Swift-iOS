@@ -14,6 +14,7 @@ class SwiftKADETests: XCTestCase {
     private var eventService: EventService!
     private var eventPresenter: EventPresenter!
     private var mainController: MainController!
+    private var teamService: TeamService!
     
     override func setUp() {
         super.setUp()
@@ -22,6 +23,7 @@ class SwiftKADETests: XCTestCase {
         self.eventService = EventService()
         self.eventPresenter = EventPresenter()
         self.mainController = MainController()
+        self.teamService = TeamService()
     }
     
     override func tearDown() {
@@ -30,7 +32,7 @@ class SwiftKADETests: XCTestCase {
     }
     
     func testEventServiceWithLastEventUrl(){
-        let anExpectation = expectation(description: "foobar")
+        let anExpectation = expectation(description: "LastMatch")
         eventService.getEvents(url: LAST_EVENT_URL) { (events) in
             XCTAssertEqual(events.count, 15)
             anExpectation.fulfill()
@@ -44,7 +46,7 @@ class SwiftKADETests: XCTestCase {
     }
     
     func testEventServiceWithNextEventUrl(){
-        let anExpectation = expectation(description: "foobar")
+        let anExpectation = expectation(description: "NextMatch")
         eventService.getEvents(url: NEXT_EVENT_URL) { (events) in
             XCTAssertEqual(events.count, 15)
             anExpectation.fulfill()
@@ -55,6 +57,94 @@ class SwiftKADETests: XCTestCase {
                 XCTFail("Error: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func testTeamService(){
+        let url = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=133604"
+        let resultUrl = "https://www.thesportsdb.com/images/media/team/badge/vrtrtp1448813175.png"
+        
+        let anExpectation = expectation(description: "Team")
+        teamService.getTeamBadge(url: url) { (team) in
+            XCTAssertEqual(team[0].strTeamBadge, resultUrl)
+            XCTAssertEqual(team.count, 1)
+            anExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                XCTFail("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testEventPresenterInController(){
+        class mockClass: EventView{
+            var isStartLoadingCalled = false
+            var isStopLoadingCalled = false
+            var isSetEmptyEventsCalled = false
+            var isGetEventsCalled = false
+            
+            var presenter: EventPresenter!
+            
+            init() {
+                presenter = EventPresenter()
+                presenter.getEvents(view: self, service: EventService(), url: LAST_EVENT_URL)
+            }
+            
+            func startLoading() {
+                isStartLoadingCalled = true
+            }
+            
+            func stopLoading() {
+                isStopLoadingCalled = true
+                XCTAssertTrue(self.isStopLoadingCalled)
+            }
+            
+            func setEmptyEvents() {
+                isSetEmptyEventsCalled = true
+            }
+            
+            func getEvents(events: [Event]) {
+                isGetEventsCalled = true
+                XCTAssertTrue(self.isGetEventsCalled)
+                XCTAssertEqual(events.count, 15)
+            }
+        }
+        let mockTest = mockClass()
+        XCTAssertTrue(mockTest.isStartLoadingCalled)
+        sleep(3)
+    }
+    
+    func testTeamPresenterInController() {
+        class MockClass: TeamBadgeView {
+            let url = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=133604"
+            
+            let presenter = TeamPresenter()
+            
+            var setHomeBadgeIsCalled = false
+            var setAwayBadgeIsCalled = false
+            var isTrue = false
+            
+            init() {
+                presenter.getTeams(url: self.url, view: self, service: TeamService(), isHome: true)
+                presenter.getTeams(url: self.url, view: self, service: TeamService(), isHome: false)
+            }
+            
+            func setHomeBadge(teams: [Team]) {
+                setHomeBadgeIsCalled = true
+                XCTAssertEqual(teams.count, 1)
+                XCTAssertTrue(setHomeBadgeIsCalled)
+            }
+            
+            func setAwayBadge(teams: [Team]) {
+                setAwayBadgeIsCalled = true
+                XCTAssertEqual(teams.count, 1)
+                XCTAssertTrue(setAwayBadgeIsCalled)
+            }
+        }
+        let mockClass = MockClass()
+        sleep(3)
+        
     }
     
     func testPerformanceExample() {
