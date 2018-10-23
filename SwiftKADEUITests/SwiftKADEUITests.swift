@@ -77,22 +77,6 @@ class SwiftKADEUITests: XCTestCase {
         backButton.tap()
     }
     
-    func testFavSection(){
-        XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let app = XCUIApplication()
-        let mainTable = app.tables["mainTable"]
-        mainTable.cells.element(boundBy: 0).tap()
-        sleep(1)
-        
-        let backButton = app.navigationBars["Detail Match"].buttons["Back"]
-        backButton.tap()
-        
-        mainTable.cells.element(boundBy: 1).tap()
-        sleep(1)
-        backButton.tap()
-    }
-    
     func testNextMatchSection(){
         XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Next Match"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Next Match\"]",".buttons[\"Next Match\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         sleep(2)
