@@ -28,21 +28,135 @@ class SwiftKADEUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testTapTableViewcellLastMatch() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        
+    func testFromMainViewToDetailView() {
         let app = XCUIApplication()
-        sleep(5)
-        let element = app.otherElements.containing(.navigationBar, identifier:"Football Match").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
-        element.tap()
+        let mainTable = app.tables["mainTable"]
+        mainTable.cells.element(boundBy: 2).tap()
         
         let backButton = app.navigationBars["Detail Match"].buttons["Back"]
         backButton.tap()
     }
     
-    func testTapTableViewcellNextMatch() {
+    func testSegmentedControl(){
+        let app = XCUIApplication()
+        let lastMatchButton = app/*@START_MENU_TOKEN@*/.buttons["Last Match"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Last Match\"]",".buttons[\"Last Match\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        lastMatchButton.tap()
+        sleep(1)
         
+        let nextMatchButton = app/*@START_MENU_TOKEN@*/.buttons["Next Match"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Next Match\"]",".buttons[\"Next Match\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        nextMatchButton.tap()
+        sleep(1)
+        
+        let favoritesButton = app/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        favoritesButton.tap()
+        sleep(1)
+        
+        nextMatchButton.tap()
+        sleep(1)
+        favoritesButton.tap()
+        sleep(1)
+        lastMatchButton.tap()
+        sleep(1)
+    }
+    
+    func testLastMatchSection(){
+        let app = XCUIApplication()
+        let mainTable = app.tables["mainTable"]
+        mainTable.cells.element(boundBy: 0).tap()
+        
+        let backButton = app.navigationBars["Detail Match"].buttons["Back"]
+        backButton.tap()
+        
+        mainTable.cells.element(boundBy: 1).tap()
+        backButton.tap()
+        
+        mainTable.cells.element(boundBy: 2).tap()
+        backButton.tap()
+        
+        mainTable.cells.element(boundBy: 3).tap()
+        backButton.tap()
+    }
+    
+    func testFavSection(){
+        XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let app = XCUIApplication()
+        let mainTable = app.tables["mainTable"]
+        mainTable.cells.element(boundBy: 0).tap()
+        sleep(1)
+        
+        let backButton = app.navigationBars["Detail Match"].buttons["Back"]
+        backButton.tap()
+        
+        mainTable.cells.element(boundBy: 1).tap()
+        sleep(1)
+        backButton.tap()
+    }
+    
+    func testNextMatchSection(){
+        XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Next Match"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Next Match\"]",".buttons[\"Next Match\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(2)
+
+        let app = XCUIApplication()
+        let mainTable = app.tables["mainTable"]
+        mainTable.cells.element(boundBy: 0).tap()
+        sleep(1)
+        
+        let backButton = app.navigationBars["Detail Match"].buttons["Back"]
+        backButton.tap()
+        
+        mainTable.cells.element(boundBy: 1).tap()
+        sleep(1)
+        backButton.tap()
+    }
+    
+    func testSaveAndDeleteFromFavorite(){
+        XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let app = XCUIApplication()
+        sleep(1)
+        XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Next Match"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Next Match\"]",".buttons[\"Next Match\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(2)
+        
+        let mainTable = app.tables["mainTable"]
+        mainTable.cells.element(boundBy: 0).tap()
+        sleep(1)
+        
+        let detailMatchNavigationBar = app.navigationBars["Detail Match"]
+        let starunsavedButton = detailMatchNavigationBar.buttons["StarUnsaved"]
+        starunsavedButton.tap()
+        sleep(1)
+        
+        let backButton = detailMatchNavigationBar.buttons["Back"]
+        backButton.tap()
+        
+        let favoritesButton = app/*@START_MENU_TOKEN@*/.buttons["Favorites"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Favorites\"]",".buttons[\"Favorites\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        favoritesButton.tap()
+        sleep(1)
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Last Match"]/*[[".segmentedControls[\"mainSegmentedControl\"].buttons[\"Last Match\"]",".buttons[\"Last Match\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(1)
+        
+        mainTable.cells.element(boundBy: 0).tap()
+        sleep(1)
+        
+        starunsavedButton.tap()
+        sleep(1)
+        
+        backButton.tap()
+        favoritesButton.tap()
+        mainTable.cells.element(boundBy: 0).tap()
+        sleep(1)
+        
+        detailMatchNavigationBar.buttons["StarSaved"].tap()
+        sleep(1)
+        backButton.tap()
+        sleep(1)
+        
+        mainTable.cells.element(boundBy: 0).tap()
+        sleep(1)
+        detailMatchNavigationBar.buttons["StarSaved"].tap()
+        sleep(1)
+        backButton.tap()
+        sleep(1)
     }
 }

@@ -27,6 +27,9 @@
                         <segment title="Next Match"/>
                         <segment title="Favorites"/>
                     </segments>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="mainSegmentedControl"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="segmentedControlChanged:" destination="-1" eventType="valueChanged" id="3de-zs-b6L"/>
                     </connections>
@@ -34,6 +37,9 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z61-2B-iMb">
                     <rect key="frame" x="16" y="61" width="343" height="606"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="mainTable"/>
+                    </userDefinedRuntimeAttributes>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error fetching data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvX-1j-Zy9">
                     <rect key="frame" x="116" y="323" width="143" height="21"/>
@@ -46,9 +52,6 @@
                 </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <accessibility key="accessibilityConfiguration">
-                <bool key="isElement" value="YES"/>
-            </accessibility>
             <constraints>
                 <constraint firstItem="zvX-1j-Zy9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="CB8-Aw-BiH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="z61-2B-iMb" secondAttribute="trailing" constant="16" id="DAX-eT-woC"/>
