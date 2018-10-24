@@ -10,7 +10,6 @@ import XCTest
 @testable import SwiftKADE
 
 class SwiftKADETests: XCTestCase {
-    
     private var eventService: EventService!
     private var eventPresenter: EventPresenter!
     private var mainController: MainController!
@@ -22,7 +21,6 @@ class SwiftKADETests: XCTestCase {
         
         self.eventService = EventService()
         self.eventPresenter = EventPresenter()
-        self.mainController = MainController()
         self.teamService = TeamService()
     }
     
