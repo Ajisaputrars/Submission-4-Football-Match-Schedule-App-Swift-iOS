@@ -12,13 +12,11 @@ import XCTest
 class SwiftKADETests: XCTestCase {
     private var eventService: EventService!
     private var eventPresenter: EventPresenter!
-    private var mainController: MainController!
     private var teamService: TeamService!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
         self.eventService = EventService()
         self.eventPresenter = EventPresenter()
         self.teamService = TeamService()
@@ -108,6 +106,7 @@ class SwiftKADETests: XCTestCase {
                 XCTAssertEqual(events.count, 15)
             }
         }
+        
         let mockTest = mockClass()
         XCTAssertTrue(mockTest.isStartLoadingCalled)
         sleep(3)
@@ -140,7 +139,8 @@ class SwiftKADETests: XCTestCase {
                 XCTAssertTrue(setAwayBadgeIsCalled)
             }
         }
-        let mockClass = MockClass()
+        
+        _ = MockClass()
         sleep(3)
         
     }
@@ -151,5 +151,4 @@ class SwiftKADETests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }
