@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TeamBadgeView{
+protocol TeamBadgeProtocol{
     func setHomeBadge(teams: [Team])
     func setAwayBadge(teams: [Team])
 }

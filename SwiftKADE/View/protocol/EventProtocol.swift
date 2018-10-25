@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol EventView {
+protocol EventProtocol {
     func startLoading()
     func stopLoading()
     func setEmptyEvents()

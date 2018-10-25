@@ -74,7 +74,7 @@ class SwiftKADETests: XCTestCase {
     }
     
     func testEventPresenterInController(){
-        class mockClass: EventView{
+        class mockClass: EventProtocol{
             var isStartLoadingCalled = false
             var isStopLoadingCalled = false
             var isSetEmptyEventsCalled = false
@@ -113,7 +113,7 @@ class SwiftKADETests: XCTestCase {
     }
     
     func testTeamPresenterInController() {
-        class MockClass: TeamBadgeView {
+        class MockClass: TeamBadgeProtocol {
             let url = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=133604"
             
             let presenter = TeamPresenter()

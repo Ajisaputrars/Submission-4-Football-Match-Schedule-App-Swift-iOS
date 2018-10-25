@@ -184,7 +184,7 @@ class DetailController: UIViewController {
     }
 }
 
-extension DetailController: TeamBadgeView {
+extension DetailController: TeamBadgeProtocol {
     func setHomeBadge(teams: [Team]) {
         let teamBadgeUrl = teams[0].strTeamBadge
         detailView.configureHomeBadge(url: teamBadgeUrl)

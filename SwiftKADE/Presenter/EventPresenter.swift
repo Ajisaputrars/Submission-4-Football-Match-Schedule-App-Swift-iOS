@@ -9,7 +9,7 @@
 import Foundation
 
 class EventPresenter{
-    func getEvents(view:EventView, service: EventService, url: String){
+    func getEvents(view:EventProtocol, service: EventService, url: String){
         view.startLoading()
         service.getEvents(url: url) { (events) in
             view.stopLoading()

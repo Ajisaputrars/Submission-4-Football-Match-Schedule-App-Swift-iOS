@@ -123,7 +123,7 @@ extension MainController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension MainController: EventView{
+extension MainController: EventProtocol{
     func startLoading() {
         mainView.loadingIndicator.isHidden = false
         mainView.loadingIndicator.startAnimating()
