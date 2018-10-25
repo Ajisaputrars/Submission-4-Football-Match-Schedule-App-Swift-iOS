@@ -160,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				D74993B3217B85E4006C20AE /* Api */,
+				D74993AD217B84B9006C20AE /* Protocol */,
 				D74993B0217B853E006C20AE /* Presenter */,
 				D74993A3217B2798006C20AE /* SupportFile */,
 				D749939C217B23AA006C20AE /* Model */,
@@ -203,7 +204,6 @@
 		D749939B217B23A5006C20AE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D74993AD217B84B9006C20AE /* protocol */,
 				D749939E217B273C006C20AE /* cell */,
 				D749939D217B23B6006C20AE /* xib */,
 				D7499398217B2387006C20AE /* MainView.swift */,
@@ -256,13 +256,13 @@
 			path = Protected;
 			sourceTree = "<group>";
 		};
-		D74993AD217B84B9006C20AE /* protocol */ = {
+		D74993AD217B84B9006C20AE /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				D74993AE217B84CF006C20AE /* EventProtocol.swift */,
 				D778E76F217C7FD000FCF8A2 /* TeamBadgeProtocol.swift */,
 			);
-			path = protocol;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		D74993B0217B853E006C20AE /* Presenter */ = {
