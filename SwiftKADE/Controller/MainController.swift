@@ -21,9 +21,10 @@ class MainController: UIViewController {
         guard isViewLoaded else { return nil }
         return view as! MainView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "Football Match"
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -147,6 +148,7 @@ extension MainController: EventProtocol{
         mainView.errorLabel.isHidden = true
         self.events = events
         mainView.eventTableView.reloadData()
+        
     }
 }
 

@@ -33,6 +33,7 @@
 		D778E770217C7FD000FCF8A2 /* TeamBadgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778E76F217C7FD000FCF8A2 /* TeamBadgeProtocol.swift */; };
 		D778E772217C808500FCF8A2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778E771217C808500FCF8A2 /* Team.swift */; };
 		D778E774217C82F400FCF8A2 /* TeamPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D778E773217C82F400FCF8A2 /* TeamPresenter.swift */; };
+		D793A8F2218173EA00902E97 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7499395217B2339006C20AE /* MainView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -416,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D793A8F2218173EA00902E97 /* MainView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
