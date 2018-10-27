@@ -5,7 +5,7 @@ Football Club app uses data from TheSportsDB (open API) and presents the informa
 ### **Objectives**
 These are the objectives of this project:
 1. Same as **[Submission 3 - Football Club App (Swift / iOS)][1]** project.
-2. Implementing Xcode Unit Test and UI Test
+2. Implementing Unit Test and UI Test
 
 ### **Prerequisites**
 These are the prerequisites before you try to read (and understand) this project:
