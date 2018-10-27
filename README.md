@@ -5,7 +5,7 @@ Football Club app uses data from TheSportsDB (open API) and presents the informa
 ### **Objectives**
 These are the objectives of this project:
 1. Same as **[Submission 3 - Football Club App (Swift / iOS)][1]** project.
-2. Implementing Unit Test and UI Test
+2. Implementing Unit Test and UI Test 
 
 ### **Prerequisites**
 These are the prerequisites before you try to read (and understand) this project:
@@ -19,7 +19,7 @@ These are the prerequisites before you try to read (and understand) this project
 ### **Project Overview**
 This is what you can expect from this project:
 
-![Screenshot][2]
+![Screenshot][image-1]
 
 The main page consists of a UITableView and a UISegmentedControl with 3 segments, and the cell consists of 5 UILabels to show Home Team name, Home Team score, Away Team name, Away Team score, and the date. First segment will present 15 last event, second segment will present 15 next event, and the third segment will present all saved event.
 
@@ -35,7 +35,7 @@ These are main components of MVP design pattern:
 - **_Controller_**: In MVP design pattern, **Controller** still exist of course, but its function is minimalized. Note that you split all the way the View, Model, and Presenter class, the Controller class can be thinned up, significantly.
 
 #### **Service Class**
-Every class in a project have to do only a specific job, and so does **Service** class. This class is created to get data from the server, create object based on the **Model** class, and then transfer the object to the **Presenter**.
+Every class in a project should do only a specific job, and so does **Service** class. This class is created to get data from the server, create object based on the **Model** class, and then transfer the object to the **Presenter**.
 
 #### **Core Data**
 
@@ -43,14 +43,15 @@ Core Data is a data persistance, to save a data as an object. Core Data is built
 
 ### **Author**
 
-* **[Aji Saputra Raka Siwi][3]**
+* **[Aji Saputra Raka Siwi][2]**
 
 This project is free and open. You can participate to this project to make even more better for everybody to learn.
 
 ### **License**
-This project is licensed under the GNU General Public License v3.0 - see the [**LICENSE.md**][4] file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [**LICENSE.md**][3] file for details.
 
 [1]:	https://github.com/Ajisaputrars/Submission-3-Football-Match-Schedule-App-Swift-iOS
-[2]:	https://github.com/Ajisaputrars/Submission-4-Football-Match-Schedule-App-Swift-iOS/blob/master/IMG.png
-[3]:	https://github.com/Ajisaputrars
-[4]:	https://github.com/Ajisaputrars/Submission-4-Football-Match-Schedule-App-Swift-iOS/blob/master/LICENSE
+[2]:	https://github.com/Ajisaputrars
+[3]:	https://github.com/Ajisaputrars/Submission-4-Football-Match-Schedule-App-Swift-iOS/blob/master/LICENSE
+
+[image-1]:	https://github.com/Ajisaputrars/Submission-4-Football-Match-Schedule-App-Swift-iOS/blob/master/IMG.png
