@@ -148,7 +148,6 @@ class SwiftKADETests: XCTestCase {
     func testAControllerWithPresenter(){
         let controller = MainController(nibName: "MainView", bundle: nil)
         _ = controller.view
-        
         controller.viewDidLoad()
     }
     
