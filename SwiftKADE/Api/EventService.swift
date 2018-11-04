@@ -15,7 +15,7 @@ class EventService{
         var events = [Event]()
         Alamofire.request(url).responseJSON { (respons) in
             if respons.result.isSuccess {
-                let eventsJSON: JSON = JSON(respons.result.value)
+                let eventsJSON: JSON = JSON(respons.result.value!)
                 for item in eventsJSON["events"].arrayValue {
                     let strEvent = item["strEvent"].stringValue
                     let strSport = item["strSport"].stringValue
