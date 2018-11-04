@@ -145,11 +145,11 @@ class SwiftKADETests: XCTestCase {
         
     }
     
-    func testAControllerWithPresenter(){
-        let controller = MainController(nibName: "MainView", bundle: nil)
-        _ = controller.view
-        controller.viewDidLoad()
-    }
+//    func testAControllerWithPresenter(){
+//        let controller = MainController(nibName: "MainView", bundle: nil)
+//        _ = controller.view
+//        controller.viewDidLoad()
+//    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
