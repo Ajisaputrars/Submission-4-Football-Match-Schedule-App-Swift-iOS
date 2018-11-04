@@ -15,7 +15,7 @@ class TeamService{
         var teams = [Team]()
         Alamofire.request(url).responseJSON { (respons) in
             if respons.result.isSuccess {
-                let teamJSON: JSON = JSON(respons.result.value)
+                let teamJSON: JSON = JSON(respons.result.value!)
                 for i in teamJSON["teams"].arrayValue {
                     let strTeamBadge = i["strTeamBadge"].stringValue
                     let team = Team(strTeamBadge: strTeamBadge)
