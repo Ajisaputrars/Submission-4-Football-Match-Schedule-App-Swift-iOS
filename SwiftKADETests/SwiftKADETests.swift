@@ -57,7 +57,7 @@ class SwiftKADETests: XCTestCase {
     
     func testTeamService(){
         let url = "https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=133604"
-        let resultUrl = "https://www.thesportsdb.com/images/media/team/badge/vrtrtp1448813175.png"
+        let resultUrl = "https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png"
         
         let anExpectation = expectation(description: "Team")
         teamService.getTeamBadge(url: url) { (team) in
@@ -144,12 +144,6 @@ class SwiftKADETests: XCTestCase {
         sleep(3)
         
     }
-    
-//    func testAControllerWithPresenter(){
-//        let controller = MainController(nibName: "MainView", bundle: nil)
-//        _ = controller.view
-//        controller.viewDidLoad()
-//    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
