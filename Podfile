@@ -9,7 +9,7 @@ target 'SwiftKADE' do
 
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'Kingfisher', '4.0'
+  pod 'Kingfisher'
 
   target 'SwiftKADETests' do
     inherit! :search_paths
